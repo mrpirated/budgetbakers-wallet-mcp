@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write # Required for Trusted Publishing
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -25,6 +25,4 @@ jobs:
         run: npm run build
 
       - name: Publish to NPM
-        run: npm publish --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # Fallback if needed, but Trusted Publishing will take priority
+        run: npm publish --access public --provenance --registry='https://registry.npmjs.org'
