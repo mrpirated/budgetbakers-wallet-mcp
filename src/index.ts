@@ -105,6 +105,20 @@ server.tool("list_categories", {}, async () => {
   return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
 });
 
+// --- Labels Tool ---
+server.tool("list_labels", {}, async () => {
+  const data = await makeRequest("GET", "labels");
+  if (Array.isArray(data)) {
+    const slimLabels = data.map((l: any) => ({
+      id: l.id,
+      name: l.name,
+      color: l.color
+    }));
+    return { content: [{ type: "text", text: JSON.stringify({ labels: slimLabels }, null, 2) }] };
+  }
+  return { content: [{ type: "text", text: JSON.stringify(data, null, 2) }] };
+});
+
 // --- Usage Tool ---
 server.tool("get_api_usage", {}, async () => {
   const data = await makeRequest("GET", "api-usage/stats");

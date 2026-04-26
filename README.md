@@ -30,6 +30,7 @@ Add this to your `claude_desktop_config.json`:
 - `list_accounts`: List all bank accounts and cash wallets with balances.
 - `list_records`: List transactions with optional filters (`recordDate`, `note`, `accountId`).
 - `list_categories`: List all transaction categories.
+- `list_labels`: List all transaction labels (hashtags).
 - `get_api_usage`: Check your current API quota.
 
 ## License
